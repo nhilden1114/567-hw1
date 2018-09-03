@@ -50,12 +50,11 @@ class TestTriangles(unittest.TestCase):
         self.assertNotEqual(classify_triangle(4,4,4), 'Not a triangle', '4,4,4 is equilateral and not right')
         
     def test_otherInput(self):
-        """ Test inputs that are not positive integers """
-        self.assertEqual(classify_triangle('one', 'three', 'three'), 'All values must be positive integers')
-        self.assertEqual(classify_triangle(1, 'three', 'three'), 'All values must be positive integers')
-        self.assertEqual(classify_triangle(1, 3, True), 'All values must be positive integers')
-        self.assertEqual(classify_triangle(1.34557887653, 5, 3), 'All values must be positive integers')
-        self.assertEqual(classify_triangle(-3,4,-5), 'All values must be positive integers')
+        """ Test inputs that are not integers """
+        self.assertEqual(classify_triangle('one', 'three', 'three'), 'All values must be integers')
+        self.assertEqual(classify_triangle(1, 'three', 'three'), 'All values must be integers')
+        self.assertEqual(classify_triangle(1, 3, True), 'All values must be integers')
+        self.assertEqual(classify_triangle(1.34557887653, 5, 3), 'All values must be integers')
         
     def test_rightTriangle(self):
         """ Test functionality of whether or not a triangle is right"""
