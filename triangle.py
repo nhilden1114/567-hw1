@@ -13,8 +13,8 @@ def classify_triangle(a,b,c):
     
     output = ''
     
-    if (type(a)!= int or type(b)!= int or type(c)!= int): 
-        return 'All values must be integers'
+    if ((type(a)!= int or type(b)!= int or type(c)!= int) or (a<0 or b<0 or c<0)): 
+        return 'All values must be positive integers'
         
     if (a+b <= c) or (a+c <= b) or (c+b <= b):
         return 'Not a triangle'
@@ -29,4 +29,6 @@ def classify_triangle(a,b,c):
     return 'Your triangle is ' + output + ' and not right' 
     
 if __name__ == '__main__':
-    print(classify_triangle(5,4,5))
+    print(classify_triangle(-3,3,5))
+
+    
