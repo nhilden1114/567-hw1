@@ -5,28 +5,29 @@ Created on Aug 28, 2018
 I pledge my honor that I have abided by the Stevens Honor System
 '''
 
-def classify_triangle(a,b,c):
+def classify_triangle(val_a, val_b, val_c):
 
     '''returns a string that specifies whether the triangle is not
-    a triangle, scalene, isosceles, or equilateral and whether or 
+    a triangle, scalene, isosceles, or equilateral and whether or
     not they are also right triangles as well. '''
-    
+
     output = ''
-    
-    if (type(a)!= int or type(b)!= int or type(c)!= int): 
+
+    if (not isinstance(val_c, int) or not isinstance(val_b, int) or not isinstance(val_a, int)):
         return 'All values must be integers'
-        
-    if (a+b <= c) or (a+c <= b) or (c+b <= b):
+
+    if (val_a+val_b <= val_c) or (val_a+val_c <= val_b) or (val_c+val_b <= val_a):
         return 'Not a triangle'
-    if a==b and b==c:
+    if val_a == val_b and val_b == val_c:
         output = 'equilateral'
-    if (a==b and a!=c) or (a==c and a!=b) or (b==c and b!=a):
+    if (val_a == val_b and val_a != val_c) or (val_a == val_c and val_a != val_b):
         output = 'isosceles'
-    if a!=b and b!=c and c!=a:
+    if (val_b == val_c and val_b != val_a):
+        output = 'isosceles'
+    if val_a != val_b and val_b != val_c and val_c != val_a:
         output = 'scalene'
-    if ((a**2 + b**2) == c**2) or ((c**2 + b**2) == a**2) or ((a**2 + c**2) == b**2):
+    if (val_a**2 + val_b**2) == val_c**2 or (val_c**2 + val_b**2) == val_a**2:
         return 'Your triangle is ' + output + ' and right'
-    return 'Your triangle is ' + output + ' and not right' 
-    
-if __name__ == '__main__':
-    print(classify_triangle(5,4,5))
+    if (val_a**2 + val_c**2) == val_b**2:
+        return 'Your triangle is ' + output + ' and right'
+    return 'Your triangle is ' + output + ' and not right'

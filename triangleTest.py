@@ -6,7 +6,7 @@ I pledge my honor that I have abided by the Stevens Honor System
 '''
 
 import unittest
-from hw1.triangle import classify_triangle
+from triangle import classify_triangle
 
 class TestTriangles(unittest.TestCase):
     
@@ -14,6 +14,7 @@ class TestTriangles(unittest.TestCase):
         """ Test aspects of a scalene triangle """
         self.assertEqual(classify_triangle(3,4,5),'Your triangle is scalene and right', '3,4,5 is scalene and right')
         self.assertEqual(classify_triangle(5,3,4),'Your triangle is scalene and right', '5,3,4 is scalene and right')
+        self.assertEqual(classify_triangle(3,5,4),'Your triangle is scalene and right', '3,5,4 is scalene and right')
         self.assertEqual(classify_triangle(3,7,9),'Your triangle is scalene and not right', '3,7,9 is scalene and not right')
         self.assertEqual(classify_triangle(5,10,15),'Not a triangle', '5,10,15 is not a triangle')
         self.assertNotEqual(classify_triangle(2, 2, 2), 'Your triangle is scalene and right', '2,2,2 is equilateral and not right')
@@ -32,7 +33,7 @@ class TestTriangles(unittest.TestCase):
 
     def test_isosceles(self):
         """ Test aspects of an isosceles triangle """
-        self.assertEqual(classify_triangle(3,3,4),'Your triangle is isosceles and not right', '3,3,4 is isosceles and not right')
+        self.assertEqual(classify_triangle(3,4,4),'Your triangle is isosceles and not right', '3,4,4 is isosceles and not right')
         self.assertEqual(classify_triangle(5,5,7),'Your triangle is isosceles and not right', '5,5,7 is isosceles and not right')
         self.assertEqual(classify_triangle(10,10,14),'Your triangle is isosceles and not right', '10,10,14 is isosceles and not right')
         self.assertEqual(classify_triangle(2,2,6),'Not a triangle', '2,2,6 is not a triangle')
@@ -53,7 +54,7 @@ class TestTriangles(unittest.TestCase):
         """ Test inputs that are not integers """
         self.assertEqual(classify_triangle('one', 'three', 'three'), 'All values must be integers')
         self.assertEqual(classify_triangle(1, 'three', 'three'), 'All values must be integers')
-        self.assertEqual(classify_triangle(1, 3, True), 'All values must be integers')
+        self.assertEqual(classify_triangle(1, 3, -6.3), 'All values must be integers')
         self.assertEqual(classify_triangle(1.34557887653, 5, 3), 'All values must be integers')
         
     def test_rightTriangle(self):
